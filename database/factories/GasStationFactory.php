@@ -25,12 +25,12 @@ class GasStationFactory extends Factory
             'company_id' => rand(1,6),
             'street' => $this->faker->streetAddress,
             'city' => $this->faker->city,
-            'priceDiesel' => rand(3500, 5000) / 100,
-            'priceDieselSpecial' => rand(3500, 5000) / 100,
-            'pricePetrol' => rand(3500, 5000) / 100,
-            'pricePetrolSpecial' => rand(3500, 5000) / 100,
-            'priceLPG' => rand(3500, 5000) / 100,
-            'priceCNG' => rand(3500, 5000) / 100,
+            'priceDiesel' => rand(350, 500) / 10,
+            'priceDieselSpecial' => rand(350, 500) / 10,
+            'pricePetrol' => rand(350, 500) / 10,
+            'pricePetrolSpecial' => rand(350, 500) / 10,
+            'priceLPG' => rand(350, 500) / 10,
+            'priceCNG' => rand(350, 500) / 10,
         ];
     }
 

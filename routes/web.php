@@ -18,5 +18,6 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::resource('/cerpaci-stanice', GasStationController::class);
-Route::resource('/cerpaci-stanice/{id}', GasStationController::class);
+Route::resource('/gasStation', GasStationController::class);
+//Route::get('', WelcomeController);
+//Route::resource('/gasStation/{id}', GasStationController::class);

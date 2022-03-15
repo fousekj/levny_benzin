@@ -18,9 +18,13 @@ class GasStationController extends Controller
      */
     public function index()
     {
+//        return view('gasStation.index', [
+//            'gasStationDiesel' => GasStation::orderBy('priceDiesel', 'asc')->first(),
+//            'company' => GasStation::orderBy('priceDiesel', 'asc')->first()->company
+//        ]);
+
         return view('gasStation.index', [
-            'gasStation' => GasStation::first(),
-            'company' => GasStation::first()->company
+            'gasStations' => GasStation::orderBy('id', 'asc')->get()
         ]);
     }
 
