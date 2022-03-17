@@ -4,7 +4,7 @@
 @section('description', 'Výpis všech čerpacích stanic')
 
 @section('content')
-    <table class="table table-striped table-bordered table-responsive-md">
+    <table class="table table-responsive table-striped table-bordered">
         <thead>
         <tr>
             <th>Společnost</th>
@@ -15,6 +15,7 @@
             <th>Cena prémiového benzínu</th>
             <th>Cena LPG</th>
             <th>Cena CNG</th>
+            <th>Naposledy aktualizováno</th>
             <th>Editace</th>
         </tr>
         </thead>
@@ -29,13 +30,15 @@
                 </td>
 
                 <td>{{ $gasStation->priceDiesel }}</td>
-                <td>{{$gasStation->priceDieselSpecial}}</td>
+                <td>{{ $gasStation->priceDieselSpecial }}</td>
                 <td>{{ $gasStation->pricePetrol }}</td>
-                <td>{{$gasStation->pricePetrolSpecial}}</td>
+                <td>{{ $gasStation->pricePetrolSpecial }}</td>
                 <td>{{ $gasStation->priceLPG }}</td>
-                <td>{{$gasStation->priceCNG}}</td>
+                <td>{{ $gasStation->priceCNG }}</td>
+
+                <td>{{ $gasStation->updated_at->diffForHumans() }}</td>
                 <td>
-                    <a href="#">Editovat</a>
+                    <a href="{{ route('gasStation.edit') }}">Aktualizovat ceny</a>
                     <a href="#" >Odstranit</a>
 
                     <form action="{{ route('gasStation.destroy', ['gasStation' => $gasStation]) }}" method="POST" id="gasStation-delete-{{ $gasStation->id }}" class="d-none">
@@ -54,7 +57,7 @@
         </tbody>
     </table>
 
-    <a href="#" class="btn btn-primary">
+    <a href="{{ route('gasStation.create') }}" class="btn btn-primary">
         Přidat čerpací stanici
     </a>
 @endsection
