@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GasStation\StoreRequest;
+use App\Http\Requests\GasStation\UpdateRequest;
 use App\Models\Company;
 use App\Models\GasStation;
 use Illuminate\Contracts\Foundation\Application;
@@ -56,7 +57,7 @@ class GasStationController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        GasStation::create([
+        GasStation::query()->create([
             'company_id' => $request->company_id,
             'street' => $request->street,
             'city' => $request->city,
@@ -93,19 +94,31 @@ class GasStationController extends Controller
      */
     public function edit($id)
     {
-        return view('gasStation.edit');
+        return view('gasStation.edit', [
+            'gasStation' => GasStation::query()->findOrFail($id),
+            'company' => GasStation::query()->findOrFail($id)->company
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param UpdateRequest $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        //
+        GasStation::query()->update([
+            'priceDiesel' => $request->priceDiesel ?? '0.0',
+            'priceDieselSpecial' => $request->priceDieselSpecial ?? '0.0',
+            'pricePetrol' =>$request->pricePetrol ?? '0.0',
+            'pricePetrolSpecial' =>$request->pricePetrolSpecial ?? '0.0',
+            'priceCNG' =>$request->priceCNG ?? '0.0',
+            'priceLPG' =>$request->priceLPG ?? '0.0',
+        ]);
+
+        return redirect()->route('');
     }
 
     /**
