@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GasStationController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +20,5 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::resource('/gasStation', GasStationController::class);
-//Route::get('', WelcomeController);
+Route::get('', WelcomeController::class);
 //Route::resource('/gasStation/{id}', GasStationController::class);
