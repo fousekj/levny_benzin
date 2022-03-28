@@ -13,7 +13,7 @@
                 <div class="h3">
                     {{ $gasStationCheapestPetrol->pricePetrol }}
                 </div>
-                <a href="#">
+                <a href="{{ route('gasStation.show', ['gasStation' => $gasStationCheapestPetrol, 'company' => $gasStationCheapestPetrol->company]) }}">
                     {{ $gasStationCheapestPetrol->street }}
                     <br>
                     {{ $gasStationCheapestPetrol->city }}
@@ -26,7 +26,7 @@
                 <div class="h3">
                     {{ $gasStationCheapestDiesel->priceDiesel }}
                 </div>
-                <a href="#">
+                <a href="{{ route('gasStation.show', ['gasStation' => $gasStationCheapestDiesel, 'company' => $gasStationCheapestDiesel->company]) }}">
                     {{ $gasStationCheapestDiesel->street }}
                     <br>
                     {{ $gasStationCheapestDiesel->city }}
@@ -35,35 +35,7 @@
         </div>
     </div>
 
-{{--    <h1>{{ $company->name }}</h1>--}}
-{{--    {!! $gasStation->street !!}--}}
-{{--    <br>--}}
-{{--    {!! $gasStation->city !!}--}}
 
-{{--    <table class="table table-bordered table-responsive-md table-striped">--}}
-{{--        <thead>--}}
-{{--        <tr>--}}
-{{--            <th>Cena benzínu</th>--}}
-{{--            <th>Cena prémiového benzínu</th>--}}
-{{--            <th>Cena nafty</th>--}}
-{{--            <th>Cena prémiové nafty</th>--}}
-{{--            <th>Cena LPG</th>--}}
-{{--            <th>Cena CNG</th>--}}
-{{--        </tr>--}}
-{{--        </thead>--}}
-{{--        <tbody>--}}
-{{--        <tr>--}}
-{{--            <td>{{ $gasStation->pricePetrol }}</td>--}}
-{{--            <td>{{ $gasStation->pricePetrolSpecial }}</td>--}}
-{{--            <td>{{ $gasStation->priceDiesel }}</td>--}}
-{{--            <td>{{ $gasStation->priceDieselSpecial }}</td>--}}
-{{--            <td>{{ $gasStation->priceLPG }}</td>--}}
-{{--            <td>{{ $gasStation->priceCNG }}</td>--}}
-{{--        </tr>--}}
-{{--        </tbody>--}}
-
-
-{{--    </table>--}}
 
 
 @endsection

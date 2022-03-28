@@ -7,7 +7,7 @@
 
     <h1>{{ $company->name }}</h1>
 
-    <a href="#">
+    <a href="https://www.google.com/maps/search/?api=1&query={{$gasStation->street}} {{$gasStation->city}} {{$company->name}}" target="_blank" >
         {!! $gasStation->street !!}
         <br>
         {!! $gasStation->city !!}
@@ -22,6 +22,7 @@
             <th>Cena prémiové nafty</th>
             <th>Cena LPG</th>
             <th>Cena CNG</th>
+            <th>Naposledy aktualizováno</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
             <td>{{ $gasStation->priceDieselSpecial }}</td>
             <td>{{ $gasStation->priceLPG }}</td>
             <td>{{ $gasStation->priceCNG }}</td>
+            <td>{{$gasStation->updated_at->diffForHumans()}}</td>
         </tr>
         </tbody>
 
