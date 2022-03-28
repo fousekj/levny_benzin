@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GasStationController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/gasStation', GasStationController::class);
 Route::get('', WelcomeController::class);
-//Route::resource('/gasStation/{id}', GasStationController::class);
+Route::get('contact', [ContactController::class, 'show'])->name('contact.show');
+Route::post('contact', [ContactController::class, 'send'])->name('contact.send');

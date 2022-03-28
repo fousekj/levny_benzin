@@ -11,14 +11,6 @@
     <script src="{{ mix('js/app.js') }}"></script>
 </head>
 <body>
-{{--<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">--}}
-{{--    <h5 class="my-0 mr-md-auto font-weight-normal">{{ env('APP_NAME') }}</h5>--}}
-{{--    <nav class="my-2 my-md-0 mr-md-3">--}}
-{{--        <a class="p-2 text-dark" href="#">Hlavní stránka</a>--}}
-{{--        <a class="p-2 text-dark" href="{{ route('gasStation.index') }}">Seznam pump</a>--}}
-{{--        <a class="p-2 text-dark" href="#">Kontakt</a>--}}
-{{--    </nav>--}}
-{{--</div>--}}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand p-2" href="{{ url('') }}">Logo</a>
@@ -35,7 +27,7 @@
                 <a class="nav-link" href="{{ route('gasStation.index') }}">Seznam čerpacích stanic</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Kontakt</a>
+                <a class="nav-link" href="{{ route('contact.show') }}">Kontakt</a>
             </li>
         </ul>
     </div>
