@@ -24,3 +24,7 @@ Route::resource('/gasStation', GasStationController::class);
 Route::get('', WelcomeController::class);
 Route::get('contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

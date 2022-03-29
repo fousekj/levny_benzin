@@ -16,6 +16,6 @@ class GasStationSeeder extends Seeder
      */
     public function run()
     {
-
+        GasStation::factory()->count(10)->make();
     }
 }

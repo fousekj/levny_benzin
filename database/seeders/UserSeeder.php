@@ -8,6 +8,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -18,16 +19,21 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->updateOrInsert([
-            'name' => 'jfousek',
-            'email' => 'jirfousek@gmail.com',
-            'email_verified_at' => Carbon::now(),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-        DB::table('users')->updateOrInsert([
+        $admin = User::updateOrCreate([
             'name' => 'jfousekadmin',
+            'email' => 'uzivatel@localhost',
+            'password' => Hash::make('password'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'email_verified_at' => Carbon::now()
+        ]);
+        $admin->assignRoles(['admin', 'uzivatel']);
+
+
+        User::updateOrCreate([
+            'name' => 'jfousek',
             'email' => 'jirfousek@icloud.com',
+            'password' => Hash::make('password'),
             'email_verified_at' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
