@@ -38,8 +38,9 @@
 
                 <td>{{ $gasStation->updated_at->diffForHumans() }}</td>
                 <td>
-                    <a href="{{ route('gasStation.edit', ['gasStation' => $gasStation]) }}">Aktualizovat ceny</a>
+                    <a href="{{ route('gasStation.edit', ['gasStation' => $gasStation, 'company' => $gasStation->company->name]) }}">Aktualizovat ceny</a>
                     <a href="#" onclick="document.getElementById('gasStation-delete-{{ $gasStation->id }}').submit();">Odstranit</a>
+
 
                     <form action="{{ route('gasStation.destroy', ['gasStation' => $gasStation]) }}" method="POST" id="gasStation-delete-{{ $gasStation->id }}" class="d-none">
                         @csrf

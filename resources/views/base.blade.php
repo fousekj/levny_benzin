@@ -13,13 +13,9 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand p-2" href="{{ url('') }}">Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+    <a class="navbar-brand m-2" href="{{ url('') }}">Logo</a>
+    <div class="collapse navbar-collapse container-fluid" id="navbarNav">
+        <ul class="navbar-nav ">
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('') }}">Domů</a>
             </li>
@@ -30,7 +26,20 @@
                 <a class="nav-link" href="{{ route('contact.show') }}">Kontakt</a>
             </li>
         </ul>
+
     </div>
+
+            @auth
+                <a class="navbar-text d-flex p-2 text-decoration-none" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Odhlásit se</a>
+                <form action="{{ route('logout') }}" method="POST" class="d-none" id="logout-form">
+                    @csrf
+                </form>
+            @else
+                <a class="navbar-text d-flex justify-content-end p-2 text-decoration-none" href="{{ route('login') }}">Přihlášení</a>
+                <a class="navbar-text d-flex justify-content-end p-2 text-decoration-none" href="{{ route('register') }}">Registrace</a>
+            @endauth
+
+
 </nav>
 
 <div class="container">

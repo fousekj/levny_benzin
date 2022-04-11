@@ -6,12 +6,15 @@
 @section('content')
 
     <h1>{{ $company->name }}</h1>
+    <div class="">
+        <a href="https://www.google.com/maps/search/?api=1&query={{$gasStation->street}} {{$gasStation->city}} {{$company->name}}" target="_blank" >
+            {!! $gasStation->street !!}
+            <br>
+            {!! $gasStation->city !!}
+        </a>
+    </div>
 
-    <a href="https://www.google.com/maps/search/?api=1&query={{$gasStation->street}} {{$gasStation->city}} {{$company->name}}" target="_blank" >
-        {!! $gasStation->street !!}
-        <br>
-        {!! $gasStation->city !!}
-    </a>
+    <a href="{{ route('gasStation.edit', ['gasStation' => $gasStation, 'company' => $company]) }}" class="btn btn-primary mt-1 mb-1">Aktualizovat ceny</a>
 
     <table class="table table-bordered table-responsive-md table-striped">
         <thead>

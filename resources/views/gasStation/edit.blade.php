@@ -4,7 +4,8 @@
 @section('description', 'Aktualizece cen')
 
 @section('content')
-    <h3>Aktualizace cen na této čerpací stanici {{ $gasStation->name }}</h3>
+    <h3>Aktualizace cen na této čerpací stanici </h3>
+    <h5>{{ $company->name }}</h5>
     <h5>{{ $gasStation->street }} {{ $gasStation->city }}</h5>
 
     <form action="{{ route('gasStation.update', ['gasStation' => $gasStation]) }}" method="POST">
@@ -40,7 +41,7 @@
             <input type="number" step=".1" name="priceLPG" id="priceLPG" class="form-control" placeholder="{{ $gasStation->priceLPG }}">
         </div>
 
-        <button type="submit" class="btn btn-primary bg-dark mt-2">Vytvořit</button>
+        <button type="submit" class="btn btn-primary bg-dark mt-2">Aktualizovat</button>
 
     </form>
 @endsection

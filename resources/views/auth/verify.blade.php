@@ -1,24 +1,26 @@
-@extends('layouts.app')
+@extends('base')
+
+@section('title', 'Ověření emailu')
+@section('description', 'Ověřte svou emailovou adresu')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <div class="card-header">Ověřte svou emailovou adresu</div>
 
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                            Odkaz pro ověření byl odeslán na vaší emailovou adresu.
                         </div>
                     @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
+                    Předtím než budete pokračovat, se prosím ujistěte, že jste odkaz neobdrželi.
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Klikněte zde, pro zaslání nového emailu</button>.
                     </form>
                 </div>
             </div>

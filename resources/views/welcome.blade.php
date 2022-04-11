@@ -4,6 +4,11 @@
 @section('description', 'Welcome page')
 
 @section('content')
+
+    @if(session('verified'))
+        <div class="alert alert-success">E-mailová adresa byla úspěšně ověřená</div>
+    @endif
+
     <div class="container">
         <div class="row">
             <div class="col-md align-content-center">
