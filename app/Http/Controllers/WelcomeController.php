@@ -15,8 +15,8 @@ class WelcomeController extends Controller
      */
     public function __invoke(): View
     {
-        return view('welcome', ['gasStationCheapestDiesel' => GasStation::orderBy('priceDiesel', 'asc')->first(),
-                'gasStationCheapestPetrol' => GasStation::orderBy('pricePetrol', 'asc')->first()
+        return view('welcome', ['gasStationCheapestDiesel' => GasStation::query()->where('priceDiesel', '>', '0')->orderBy('priceDiesel', 'asc')->first(),
+                'gasStationCheapestPetrol' => GasStation::query()->where('pricePetrol', '>', '0')->orderBy('pricePetrol', 'asc')->first()
         ]);
     }
 }
