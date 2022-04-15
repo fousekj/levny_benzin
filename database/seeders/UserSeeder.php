@@ -23,17 +23,18 @@ class UserSeeder extends Seeder
             'name' => 'jfousekadmin',
             'email' => 'admin@localhost',
             'password' => Hash::make('password'),
+            'role' => 'admin',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'email_verified_at' => Carbon::now()
         ]);
-        $admin->assignRoles(['admin']);
 
 
         User::updateOrCreate([
             'name' => 'jfousek',
             'email' => 'jirfousek@icloud.com',
             'password' => Hash::make('password'),
+
             'email_verified_at' => Carbon::now(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

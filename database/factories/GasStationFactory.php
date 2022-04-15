@@ -22,7 +22,7 @@ class GasStationFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => rand(1,6),
+            'company_id' => rand(1,4),
             'street' => $this->faker->streetAddress,
             'city' => $this->faker->city,
             'priceDiesel' => rand(350, 500) / 10,
