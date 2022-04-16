@@ -17,15 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-Route::resource('/gasStation', GasStationController::class);
+// Home page
 Route::get('', WelcomeController::class);
+
+// Nepřihlášení uživatelé
+Route::resource('/gasStation', GasStationController::class);
+
+//Kontakt
 Route::get('contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
 
-Auth::routes(['verify' => true]);
+//Admin
+Route::resource('/admin', GasStationController::class);
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes(['verify' => true]);
