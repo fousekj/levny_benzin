@@ -14,7 +14,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use mysql_xdevapi\Exception;
 
 class GasStationController extends Controller
 {
@@ -43,7 +42,7 @@ class GasStationController extends Controller
     public function create()
     {
         return view('gasStation.create', [
-            'gasStations' => GasStation::all(),
+            'gasStation' => GasStation::all(),
             'companies' => Company::all()
         ]);
     }
