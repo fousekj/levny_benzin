@@ -18,6 +18,6 @@ class ContactController extends Controller
     {
         Mail::to(env('MAIL_TO'))->send(new ContactMessage($request->user, $request->message));
 
-        return redirect()->route('contact.show');
+        return redirect(back())->with('message', 'Zpráva byla úspěšně odeslána.');
     }
 }
