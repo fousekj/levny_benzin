@@ -16,9 +16,9 @@
                     Nejlevnějsí benzín
                 </h2>
                 <div class="h3">
-                    {{ $gasStationCheapestPetrol->pricePetrol }}
+                    {{ sprintf('%.2f', $gasStationCheapestPetrol->pricePetrol) }}
                 </div>
-                <a href="{{ route('gasStation.show', ['gasStation' => $gasStationCheapestPetrol, 'company' => $gasStationCheapestPetrol->company]) }}">
+                <a href="{{ route('welcome.show', ['id' => $gasStationCheapestPetrol->id]) }}">
                     {{ $gasStationCheapestPetrol->street }}
                     <br>
                     {{ $gasStationCheapestPetrol->city }}
@@ -29,9 +29,9 @@
                     Nejlevnější nafta
                 </h2>
                 <div class="h3">
-                    {{ $gasStationCheapestDiesel->priceDiesel }}
+                    {{ sprintf('%.2f', $gasStationCheapestDiesel->priceDiesel) }}
                 </div>
-                <a href="{{ route('gasStation.show', ['gasStation' => $gasStationCheapestDiesel, 'company' => $gasStationCheapestDiesel->company]) }}">
+                <a href="{{ route('welcome.show', ['id' => $gasStationCheapestDiesel->id]) }}">
                     {{ $gasStationCheapestDiesel->street }}
                     <br>
                     {{ $gasStationCheapestDiesel->city }}
