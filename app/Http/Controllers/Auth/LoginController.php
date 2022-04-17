@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class LoginController extends Controller
 {
@@ -24,9 +28,20 @@ class LoginController extends Controller
     /**
      * Where to redirect users after login.
      *
-     * @var string
+     * @param Request $request
+     * @param $user
+     * @return Application|RedirectResponse|Redirector
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->hasRole('user')) {
+            return redirect(route('user.home'));
+        } elseif ($user->hasRole('admin')) {
+            return redirect(route('admin.home'));
+        } else {
+            return redirect('/');
+        }
+    }
 
     /**
      * Create a new controller instance.
