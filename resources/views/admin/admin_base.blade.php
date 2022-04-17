@@ -15,14 +15,15 @@
 <nav class="container">
     <header
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="{{ route('user.home') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <a href="{{ route('admin.home') }}"
+           class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
             <img src="https://cdn-icons-png.flaticon.com/512/483/483497.png" alt="logo.png" width="15%" height="15%">
         </a>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="{{ route('user.home') }}" class="nav-link px-2 link-dark">Domů</a></li>
-            <li><a href="{{ route('user.list') }}" class="nav-link px-2 link-dark">Seznam čerpacích stanic</a></li>
-            <li><a href="{{ route('contact.show') }}" class="nav-link px-2 link-dark">Kontakt</a></li>
+            <li><a href="{{ route('admin.home') }}" class="nav-link px-2 link-dark">Domů</a></li>
+            <li><a href="{{ route('admin.list') }}" class="nav-link px-2 link-dark">Seznam čerpacích stanic</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Správa účtů</a></li>
         </ul>
 
 
@@ -38,11 +39,11 @@
             </div>
         @else
             <div class="col-md-3 text-end">
-                <a type="button" href="{{ route('login') }}" class="btn btn-outline-primary me-2">Přihlásit
+                <button type="button" href="{{ route('login') }}" class="btn btn-outline-primary me-2">Přihlásit
                     se
-                </a>
-                <a type="button" href="{{ route('register') }}" class="btn btn-primary">Regstrovat se
-                </a>
+                </button>
+                <button type="button" href="{{ route('register') }}" class="btn btn-primary">Regstrovat se
+                </button>
             </div>
         @endauth
     </header>
@@ -57,10 +58,8 @@
                 @endforeach
             </ul>
         </div>
-    @elseif(session('message'))
-        <div class="alert alert-success">{{ session('message') }}</div>
     @endif
-    <div class="p-0">
+    <div class="pt-1">
         @yield('content')
     </div>
     <footer class="pt-4 my-md-5 border-top">

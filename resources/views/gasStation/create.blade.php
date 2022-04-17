@@ -1,4 +1,4 @@
-@extends('base')
+@extends('welcome.base')
 
 @section('title', 'Nová čerpací stanice')
 @section('descripton', 'Tvorba nové čerpací stanice')
@@ -8,6 +8,7 @@
 
     <form action="{{ route('gasStation.store') }}" method="POST">
         @csrf
+        @method('PUT')
 
         <div class="form-group w-25">
             <label for="company_id">Společnost</label>

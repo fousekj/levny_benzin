@@ -1,4 +1,4 @@
-@extends('base')
+@extends('welcome.base')
 
 @section('title', 'Aktualizace cen')
 @section('description', 'Aktualizece cen')
@@ -41,7 +41,7 @@
             <input type="number" step=".1" name="priceLPG" id="priceLPG" class="form-control" placeholder="{{ $gasStation->priceLPG }}">
         </div>
 
-        <button type="submit" class="btn btn-primary bg-dark mt-2">Aktualizovat</button>
+        <button type="submit" class="btn btn-primary mt-2">Aktualizovat</button>
 
     </form>
 @endsection

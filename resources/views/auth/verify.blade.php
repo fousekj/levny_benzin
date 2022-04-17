@@ -1,4 +1,4 @@
-@extends('base')
+@extends('welcome.base')
 
 @section('title', 'Ověření emailu')
 @section('description', 'Ověřte svou emailovou adresu')

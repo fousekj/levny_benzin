@@ -1,4 +1,4 @@
-@extends('admin.base_admin')
+@extends('admin.admin_base')
 
 @section('title', 'admin')
 @section('description', 'desc')

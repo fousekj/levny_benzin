@@ -1,9 +1,11 @@
-@extends('base')
+@extends('admin.admin_base')
 
 @section('title', 'Seznam čerpacích stanic')
 @section('description', 'Výpis všech čerpacích stanic')
 
 @section('content')
+    <a href="{{ route('gasStation.create') }}" class="btn btn-primary mb-2">Přidat čerpací stanici</a>
+
     <table class="table table-responsive table-striped table-bordered">
         <thead>
         <tr>
@@ -24,7 +26,7 @@
             <tr>
                 <td>{{ $gasStation->company->name }}</td>
                 <td>
-                    <a href="{{ route('gasStation.show', ['gasStation' => $gasStation, 'company' => $gasStation->company]) }}">
+                    <a href="#">
                         {{ $gasStation->street }}, {{ $gasStation->city }}
                     </a>
                 </td>
@@ -38,11 +40,11 @@
 
                 <td>{{ $gasStation->updated_at->diffForHumans() }}</td>
                 <td>
-                    <a href="{{ route('gasStation.edit', ['gasStation' => $gasStation, 'company' => $gasStation->company->name]) }}">Aktualizovat ceny</a>
+                    <a href="{{ route('admin.edit') }}">Aktualizovat ceny</a>
                     <a href="#" onclick="document.getElementById('gasStation-delete-{{ $gasStation->id }}').submit();">Odstranit</a>
 
 
-                    <form action="{{ route('gasStation.destroy', ['gasStation' => $gasStation]) }}" method="POST" id="gasStation-delete-{{ $gasStation->id }}" class="d-none">
+                    <form action="#" method="POST" id="gasStation-delete-{{ $gasStation->id }}" class="d-none">
                         @csrf
                         @method('DELETE')
                     </form>
@@ -50,7 +52,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="5" class="text-center">
+                <td colspan="10" class="text-center">
                     Zatím nejsou přidané žádné čerpací stanice.
                 </td>
             </tr>
@@ -58,7 +60,4 @@
         </tbody>
     </table>
 
-    <a href="{{ route('gasStation.create') }}" class="btn btn-primary">
-        Přidat čerpací stanici
-    </a>
 @endsection

@@ -1,4 +1,4 @@
-@extends('base')
+@extends('welcome.base')
 
 @section('title', 'Welcome page')
 @section('description', 'Welcome page')

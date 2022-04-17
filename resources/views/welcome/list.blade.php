@@ -1,4 +1,4 @@
-@extends('base')
+@extends('welcome.base')
 
 @section('title', 'Seznam čerpacích stanic')
 @section('description', 'Výpis všech čerpacích stanic')
@@ -40,7 +40,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="5" class="text-center">
+                <td colspan="9" class="text-center">
                     Zatím nejsou přidané žádné čerpací stanice.
                 </td>
             </tr>

@@ -14,7 +14,7 @@
         </a>
     </div>
 
-    <a href="{{ route('user.edit') }}" class="btn btn-primary mt-1 mb-1">Aktualizovat ceny</a>
+    <a href="{{ route('user.editPrices', ['id' => $gasStation->id]) }}" class="btn btn-primary mt-1 mb-1">Aktualizovat ceny</a>
 
     <table class="table table-bordered table-responsive-md table-striped">
         <thead>

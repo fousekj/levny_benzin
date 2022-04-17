@@ -1,4 +1,4 @@
-@extends('base')
+@extends('welcome.base')
 
 @section('title', 'Nová čerpací stanice')
 @section('descripton', 'Tvorba nové čerpací stanice')

@@ -1,16 +1,17 @@
-@extends('base')
+@extends('admin.admin_base')
 
 @section('title', 'Aktualizace cen')
 @section('description', 'Aktualizece cen')
 
 @section('content')
-    <h3>Aktualizace cen na této čerpací stanici </h3>
+    <h3>Aktualizace informací o této čerpací stanici</h3>
     <h5>{{ $company->name }}</h5>
     <h5>{{ $gasStation->street }} {{ $gasStation->city }}</h5>
 
     <form action="{{ route('gasStation.update', ['gasStation' => $gasStation]) }}" method="POST">
         @csrf
         @method('PUT')
+
         <div class="form-group pt-2 w-25">
             <label for="priceDiesel">Nová cena nafty</label>
             <input type="number" step=".1" name="priceDiesel" id="priceDiesel" class="form-control" placeholder="{{ $gasStation->priceDiesel }}">

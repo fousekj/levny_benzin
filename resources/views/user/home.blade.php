@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md align-content-center">
                 <h2 class="h2">
-                    Nejlevnějsí benzín User
+                    Nejlevnějsí benzín
                 </h2>
                 <div class="h3">
                     {{ sprintf('%.2f', $gasStationCheapestPetrol->pricePetrol) }}

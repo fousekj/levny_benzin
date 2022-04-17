@@ -1,4 +1,4 @@
-@extends('base')
+@extends('welcome.base')
 
 @section('title', 'Registrace')
 @section('description', 'Registrace nových uživatelů')
