@@ -24,13 +24,8 @@ class GasStationController extends Controller
      */
     public function index()
     {
-//        return view('gasStation.index', [
-//            'gasStationDiesel' => GasStation::orderBy('priceDiesel', 'asc')->first(),
-//            'company' => GasStation::orderBy('priceDiesel', 'asc')->first()->company
-//        ]);
-
         return view('gasStation.index', [
-            'gasStations' => GasStation::orderBy('id', 'asc')->get()
+            'gasStations' => GasStation::query()->orderBy('id')->get()
         ]);
     }
 
@@ -42,7 +37,7 @@ class GasStationController extends Controller
     public function create()
     {
         return view('gasStation.create', [
-            'gasStation' => GasStation::all(),
+            //'gasStation' => GasStation::all(),
             'companies' => Company::all()
         ]);
     }
@@ -68,7 +63,7 @@ class GasStationController extends Controller
             'priceLPG' => $request->priceLPG ?? '0.0',
         ]);
 
-        return redirect()->route('gasStation.index');
+        return redirect(route('admin.list'))->with('message', 'Čerpací stanice byla úspěšně vytvořena');
     }
 
     /**
@@ -127,7 +122,7 @@ class GasStationController extends Controller
         if ($request->filled('priceLPG'))
             GasStation::query()->where(['id' => $id])->update(['priceLPG' => $request->priceLPG]);
 
-        return redirect(route('user.show'));
+        return redirect(route('user.show', ['id' => $id]))->with('message', 'Ceny úspěšně aktualizovány!');
     }
 
     /**
