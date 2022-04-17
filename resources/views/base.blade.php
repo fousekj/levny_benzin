@@ -12,34 +12,40 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand m-2" href="{{ url('') }}">Logo</a>
-    <div class="collapse navbar-collapse container-fluid" id="navbarNav">
-        <ul class="navbar-nav ">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('') }}">Domů</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('gasStation.index') }}">Seznam čerpacích stanic</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('contact.show') }}">Kontakt</a>
-            </li>
+<nav class="container">
+    <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="{{ url('') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            Logo
+        </a>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{{ route('home') }}" class="nav-link px-2 link-dark">Domů</a></li>
+            <li><a href="{{ route('list') }}" class="nav-link px-2 link-dark">Seznam čerpacích stanic</a></li>
+            <li><a href="{{ route('contact.show') }}" class="nav-link px-2 link-dark">Kontakt</a></li>
         </ul>
 
-    </div>
 
-            @auth
-                <a class="navbar-text d-flex p-2 text-decoration-none" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Odhlásit se</a>
+        @auth
+            <div class="col-md-3 text-end">
+                <a href="#" class="link-primary me-2">{{ Auth::user()->name }}</a>
+                <a type="button" class="btn btn-outline-primary me-2" href="#"
+                   onclick="document.getElementById('logout-form').submit();">Odhlásit se
+                </a>
                 <form action="{{ route('logout') }}" method="POST" class="d-none" id="logout-form">
                     @csrf
                 </form>
-            @else
-                <a class="navbar-text d-flex justify-content-end p-2 text-decoration-none" href="{{ route('login') }}">Přihlášení</a>
-                <a class="navbar-text d-flex justify-content-end p-2 text-decoration-none" href="{{ route('register') }}">Registrace</a>
-            @endauth
-
-
+            </div>
+        @else
+            <div class="col-md-3 text-end">
+                <a type="button" href="{{ route('login') }}" class="btn btn-outline-primary me-2">Přihlásit
+                    se
+                </a>
+                <a type="button" href="{{ route('register') }}" class="btn btn-primary">Regstrovat se
+                </a>
+            </div>
+        @endauth
+    </header>
 </nav>
 
 <div class="container">
@@ -52,9 +58,9 @@
             </ul>
         </div>
     @endif
-<div class="p-lg-5">
-    @yield('content')
-</div>
+    <div class="p-lg-5">
+        @yield('content')
+    </div>
     <footer class="pt-4 my-md-5 border-top">
         <p>
             Levný Benzín
