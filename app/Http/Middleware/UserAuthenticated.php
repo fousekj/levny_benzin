@@ -21,7 +21,7 @@ class UserAuthenticated
             $user = Auth::user();
 
             if ($user->hasRole('admin')) {
-                return redirect(route('admin_dashboard'));
+                return redirect(route('admin.home'));
             } elseif ($user->hasRole('user')) {
                 return $next($request);
             }
