@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GasStationController;
+use App\Http\Controllers\UserControler;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,17 +18,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Home page
-Route::get('', WelcomeController::class);
+/**
+ * Routy nepřihlášených uživatelů
+ **/
+Route::middleware('redirectIfNotAuth')->group(function () {
+    Route::get('/', [WelcomeController::class, 'home'])->name('home');
+    Route::get('/seznam', [WelcomeController::class, 'list'])->name('list');
+    Route::get('/show/{id}', [WelcomeController::class, 'show'])->name('welcome.show');
+});
 
-// Nepřihlášení uživatelé
-Route::resource('/gasStation', GasStationController::class);
-
-//Kontakt
+/**
+ * Routy pro kontakt
+ */
 Route::get('contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
 
-//Admin
-Route::resource('/admin', GasStationController::class);
+/**
+ * Routy pro Admin
+ */
+Route::get('/admin', function () {
+    return view('admin_dashboard');
+})->middleware(['auth', 'admin']);
+
+/**
+ * Routy pro User
+ */
+Route::middleware(['auth', 'user'])->prefix('user')->group(function () {
+    Route::get('/', [UserControler::class, 'home'])->name('user.home');
+    Route::get('/list', [UserControler::class, 'list'])->name('user.list');
+    Route::get('/show/{id}', [UserControler::class, 'show'])->name('user.show');
+    Route::get('/edit/{id}', [UserControler::class, 'edit'])->name('user.editPrices');
+
+});
+
+Route::put('cerpaci-stanice/update/{id}', [GasStationController::class, 'update'])->name('gasStation.editPrices');
 
 Auth::routes(['verify' => true]);
