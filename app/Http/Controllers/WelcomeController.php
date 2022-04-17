@@ -13,10 +13,25 @@ class WelcomeController extends Controller
      *
      * @return View
      */
-    public function __invoke(): View
+    public function home(): View
     {
-        return view('welcome', ['gasStationCheapestDiesel' => GasStation::query()->where('priceDiesel', '>', '0')->orderBy('priceDiesel', 'asc')->first(),
+        return view('welcome.home', ['gasStationCheapestDiesel' => GasStation::query()->where('priceDiesel', '>', '0')->orderBy('priceDiesel', 'asc')->first(),
                 'gasStationCheapestPetrol' => GasStation::query()->where('pricePetrol', '>', '0')->orderBy('pricePetrol', 'asc')->first()
+        ]);
+    }
+
+    public function list()
+    {
+        return view('welcome.list', [
+            'gasStations' => GasStation::orderBy('id', 'asc')->get()
+        ]);
+    }
+
+    public function show($id)
+    {
+        return view('welcome.show', [
+            'gasStation' => GasStation::query()->findOrFail($id),
+            'company' => GasStation::query()->findOrFail($id)->company
         ]);
     }
 }
