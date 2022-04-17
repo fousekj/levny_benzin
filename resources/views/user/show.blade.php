@@ -1,4 +1,4 @@
-@extends('base')
+@extends('user.user_base')
 
 @section('title', $company->name)
 @section('description', '')
@@ -14,7 +14,7 @@
         </a>
     </div>
 
-    <a href="{{ route('gasStation.edit', ['gasStation' => $gasStation, 'company' => $company]) }}" class="btn btn-primary mt-1 mb-1">Aktualizovat ceny</a>
+    <a href="{{ route('user.edit') }}" class="btn btn-primary mt-1 mb-1">Aktualizovat ceny</a>
 
     <table class="table table-bordered table-responsive-md table-striped">
         <thead>

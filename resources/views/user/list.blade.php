@@ -1,4 +1,4 @@
-@extends('base')
+@extends('user.user_base')
 
 @section('title', 'Seznam čerpacích stanic')
 @section('description', 'Výpis všech čerpacích stanic')
@@ -24,7 +24,7 @@
             <tr>
                 <td>{{ $gasStation->company->name }}</td>
                 <td>
-                    <a href="{{ route('gasStation.show', ['gasStation' => $gasStation, 'company' => $gasStation->company]) }}">
+                    <a href="{{ route('user.show', ['id' => $gasStation->id]) }}">
                         {{ $gasStation->street }}, {{ $gasStation->city }}
                     </a>
                 </td>
@@ -38,11 +38,11 @@
 
                 <td>{{ $gasStation->updated_at->diffForHumans() }}</td>
                 <td>
-                    <a href="{{ route('gasStation.edit', ['gasStation' => $gasStation, 'company' => $gasStation->company->name]) }}">Aktualizovat ceny</a>
+                    <a href="{{ route('user.editPrices', ['id' => $gasStation->id]) }}">Aktualizovat ceny</a>
                     <a href="#" onclick="document.getElementById('gasStation-delete-{{ $gasStation->id }}').submit();">Odstranit</a>
 
 
-                    <form action="{{ route('gasStation.destroy', ['gasStation' => $gasStation]) }}" method="POST" id="gasStation-delete-{{ $gasStation->id }}" class="d-none">
+                    <form action="#" method="POST" id="gasStation-delete-{{ $gasStation->id }}" class="d-none">
                         @csrf
                         @method('DELETE')
                     </form>
@@ -58,7 +58,7 @@
         </tbody>
     </table>
 
-    <a href="{{ route('gasStation.create') }}" class="btn btn-primary">
+    <a href="#" class="btn btn-primary">
         Přidat čerpací stanici
     </a>
 @endsection
