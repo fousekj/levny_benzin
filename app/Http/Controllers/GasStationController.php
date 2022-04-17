@@ -127,7 +127,7 @@ class GasStationController extends Controller
         if ($request->filled('priceLPG'))
             GasStation::query()->where(['id' => $id])->update(['priceLPG' => $request->priceLPG]);
 
-        return redirect()->route('gasStation.index');
+        return redirect(route('user.show'));
     }
 
     /**
