@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminAuthenticated;
+use App\Http\Middleware\RedirectIfNotAuthenticated;
+use App\Http\Middleware\UserAuthenticated;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +66,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'user' => UserAuthenticated::class,
+        'admin' => AdminAuthenticated::class,
+        'redirectIfNotAuth' => RedirectIfNotAuthenticated::class,
     ];
 }
