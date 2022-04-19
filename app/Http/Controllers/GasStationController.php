@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use mysql_xdevapi\Exception;
 
 class GasStationController extends Controller
 {
@@ -122,7 +123,7 @@ class GasStationController extends Controller
         if ($request->filled('priceLPG'))
             GasStation::query()->where(['id' => $id])->update(['priceLPG' => $request->priceLPG]);
 
-        return redirect(route('user.show', ['id' => $id]))->with('message', 'Ceny úspěšně aktualizovány!');
+        return redirect()->back()->with('message', 'Ceny úspěšně aktualizovány!');
     }
 
     /**
@@ -133,10 +134,12 @@ class GasStationController extends Controller
      */
     public function destroy($id)
     {
-
+        try {
             GasStation::query()->where('id', $id)->delete();
+        } catch (Exception $exception) {
+            redirect(back())->withErrors('Došlo k chybě při odstraňování článku.');
+        }
 
-            return redirect()->route('gasStation.index');
-
+        return redirect()->route('admin.list')->with('message', 'Čerpací stanice úspěšně smazána.');
     }
 }
