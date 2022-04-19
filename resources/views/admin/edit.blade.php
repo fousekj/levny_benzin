@@ -5,10 +5,10 @@
 
 @section('content')
     <h3>Aktualizace informací o této čerpací stanici</h3>
-    <h5>{{ $company->name }}</h5>
+    <h5>{{ $gasStation->company->name }}</h5>
     <h5>{{ $gasStation->street }} {{ $gasStation->city }}</h5>
 
-    <form action="{{ route('gasStation.update', ['gasStation' => $gasStation]) }}" method="POST">
+    <form action="{{ route('gasStation.edit', ['id' => $gasStation->id]) }}" method="POST">
         @csrf
         @method('PUT')
 

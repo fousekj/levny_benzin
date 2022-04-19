@@ -26,7 +26,7 @@
             <tr>
                 <td>{{ $gasStation->company->name }}</td>
                 <td>
-                    <a href="#">
+                    <a href="{{ route('admin.show', ['id' => $gasStation->id]) }}">
                         {{ $gasStation->street }}, {{ $gasStation->city }}
                     </a>
                 </td>
@@ -40,11 +40,11 @@
 
                 <td>{{ $gasStation->updated_at->diffForHumans() }}</td>
                 <td>
-                    <a href="{{ route('admin.edit') }}">Aktualizovat ceny</a>
+                    <a href="{{ route('admin.edit', ['id' => $gasStation->id]) }}">Aktualizovat ceny</a>
                     <a href="#" onclick="document.getElementById('gasStation-delete-{{ $gasStation->id }}').submit();">Odstranit</a>
 
 
-                    <form action="#" method="POST" id="gasStation-delete-{{ $gasStation->id }}" class="d-none">
+                    <form action="{{ route('gasStation.delete', ['id' => $gasStation->id]) }}" method="POST" id="gasStation-delete-{{ $gasStation->id }}" class="d-none">
                         @csrf
                         @method('DELETE')
                     </form>

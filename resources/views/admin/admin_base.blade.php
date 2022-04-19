@@ -58,6 +58,11 @@
                 @endforeach
             </ul>
         </div>
+
+    @elseif(session('message'))
+        <div class="alert alert-success">
+            <p>{{ session('message') }}</p>
+        </div>
     @endif
     <div class="pt-1">
         @yield('content')
