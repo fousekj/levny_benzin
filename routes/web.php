@@ -48,6 +48,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin/cerpaci-stanice')->group(fun
     Route::put('/update/{id}', [GasStationController::class, 'update'])->name('gasStation.edit');
     Route::get('/create', [GasStationController::class, 'create'])->name('gasStation.create');
     Route::put('/create', [GasStationController::class, 'store'])->name('gasStation.store');
+    Route::delete('/list/{id}', [GasStationController::class, 'destroy'])->name('gasStation.delete');
+    Route::delete('/show/{id}', [GasStationController::class, 'destroy'])->name('gasStation.delete');
 });
 
 /**
