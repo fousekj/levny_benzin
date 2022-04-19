@@ -26,4 +26,12 @@ class AdminController extends Controller
             'companies' => GasStation::query()->findOrFail($id)->company
         ]);
     }
+
+    public function show($id)
+    {
+        return view('admin.show', [
+            'gasStation' => GasStation::query()->findOrFail($id),
+            'company' => GasStation::query()->findOrFail($id)->company
+        ]);
+    }
 }
